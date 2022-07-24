@@ -4,28 +4,20 @@ package com.company;
 import java.util.Scanner;
 
 interface Discount {
-    public int getDiscount();
+    int getDiscount();
 }
 
 //Clothes
 abstract class Clothes implements Discount {
-    protected String name;
-    protected int basePrice;
-    protected int discountPrice;
+    private String name;
 
-
-    protected Clothes(String name) {
+    public Clothes(String name) {
         this.name = name;
-
     }
 
-    public int getBasePrice() {
-        return basePrice;
-    }
+    public abstract int getBasePrice();
 
-    public void setBasePrice(int basePrice) {
-        this.basePrice = basePrice;
-    }
+    abstract public int getDiscountPrice();
 
     public String getName() {
         return name;
@@ -33,14 +25,6 @@ abstract class Clothes implements Discount {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getDiscountPrice() {
-        return discountPrice;
-    }
-
-    public void setDiscountPrice(int discountPrice) {
-        this.discountPrice = discountPrice;
     }
 
     @Override
@@ -51,16 +35,12 @@ abstract class Clothes implements Discount {
     public String toString() {
         return name;
     }
-
 }
 
 //Jacket (Winter Dress)
 class Jacket extends Clothes {
-    protected String name;
-
-    protected Jacket(String name) {
+    public Jacket(String name) {
         super(name);
-        this.name = name;
     }
 
     @Override
@@ -69,33 +49,19 @@ class Jacket extends Clothes {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
     public int getDiscountPrice() {
         return 125000;
     }
 
-
     public String toString() {
-        return name;
+        return super.toString();
     }
 }
 
 //Shirt (Summer ِDress)
 class Shirt extends Clothes {
-    protected String name;
-
     public Shirt(String name) {
         super(name);
-        this.name = name;
     }
 
     @Override
@@ -104,34 +70,19 @@ class Shirt extends Clothes {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    @Override
     public int getDiscountPrice() {
         return 60000;
     }
 
-
     public String toString() {
-        return name;
+        return super.toString();
     }
 }
 
 //Pants 30%
 class Pants extends Clothes {
-    protected String name;
-
     public Pants(String name) {
         super(name);
-        this.name = name;
     }
 
     @Override
@@ -140,43 +91,19 @@ class Pants extends Clothes {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
     public int getDiscountPrice() {
         return 24000;
     }
 
-
     public String toString() {
-        return name;
+        return super.toString();
     }
 }
 
 //Socks
 class Socks extends Clothes {
-    protected String name;
-
     public Socks(String name) {
         super(name);
-        this.name = name;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override
@@ -189,10 +116,8 @@ class Socks extends Clothes {
         return 5000;
     }
 
-  
-
     public String toString() {
-        return name;
+        return super.toString();
     }
 }
 
@@ -219,7 +144,7 @@ public class main1 {
                 }
                 case 3 -> {
                     Pants pants = new Pants("Pants");
-                    System.out.println("Pants 30% OFF:" + pants.getBasePrice() + " - " + pants.getDiscountPrice() + " = " + pants.getDiscount());
+                    System.out.println("Pants 30% OFF:" + pants.getName() + " " + pants.getBasePrice() + " - " + pants.getDiscountPrice() + " = " + pants.getDiscount());
                 }
                 case 4 -> {
                     Shirt shirt = new Shirt("Shirt");
